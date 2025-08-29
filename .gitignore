@@ -1,0 +1,10 @@
+# Visual Studio
+.vs/
+*.user
+
+# Libraries
+lib/
+
+# Build results
+bin/
+obj/
