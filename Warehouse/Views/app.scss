@@ -1,0 +1,58 @@
+// function set
+@import "bootstrap/scss/functions";
+
+// custom variables
+@import "variables";
+
+// imported variables
+// @import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/variables";
+
+// custom maps
+// @import "maps";
+
+// required parts
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/utilities";
+
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/close";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/tables";
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/type";
+
+// optional components
+// @import "bootstrap/scss/accordion";
+// @import "bootstrap/scss/alert";
+// @import "bootstrap/scss/badge";
+// @import "bootstrap/scss/breadcrumb";
+// @import "bootstrap/scss/button-group";
+// @import "bootstrap/scss/card";
+// @import "bootstrap/scss/carousel";
+// @import "bootstrap/scss/dropdown"; // requires popper
+// @import "bootstrap/scss/list-group";
+// @import "bootstrap/scss/modal"; // requires transitions
+// @import "bootstrap/scss/nav";
+// @import "bootstrap/scss/navbar"; // requires nav
+// @import "bootstrap/scss/offcanvas"; // requires transitions
+// @import "bootstrap/scss/pagination";
+// @import "bootstrap/scss/placeholders";
+// @import "bootstrap/scss/popover"; // requires popper
+// @import "bootstrap/scss/progress";
+// @import "bootstrap/scss/spinners";
+// @import "bootstrap/scss/toasts";
+// @import "bootstrap/scss/tooltip"; // requires popper
+
+// utilities
+@import "bootstrap/scss/helpers";
+@import "bootstrap/scss/utilities/api";
+
+// custom styles
+@import "Home/index.scss";

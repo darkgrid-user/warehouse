@@ -2,8 +2,11 @@
 .vs/
 *.user
 
-# Libraries
-lib/
+# Packages
+Warehouse/node_modules/
+
+# Generated code
+Warehouse/wwwroot/core
 
 # Build results
 bin/
