@@ -6,10 +6,66 @@
     <title>@ViewData["Title"]</title>
 </head>
 <body>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    @{
+        var buttons = new[] {
+            new { Title = "Settings", Icon="settings",     Path = "..." },
+            new { Title = "Income",   Icon="log-in",       Path = "..." },
+            new { Title = "Store",    Icon="box",          Path = "..." },
+            new { Title = "Supply",   Icon="shopping-bag", Path = "..." },
+            new { Title = "Outcome",  Icon="log-out",      Path = "..." },
+        };
+    }
+    <div class="wh-application">
+        <div class="flex-fill">
+            <div class="wh-root-container">
+                <div class="wh-title-panel">
+                    <div>
+                        <i data-feather="package"></i>
+                    </div>
+                    <div class="wh-title">
+                        Warehouse
+                    </div>
+                    <div class="d-lg-none">
+                        <button type="button"
+                                class="btn btn-sm btn-outline-primary">
+                            <i data-feather="@buttons[0].Icon"
+                               width="1.5rem"
+                               height="1.5rem"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="wh-main-container">
+                    <main role="main">
+                        @RenderBody()
+                    </main>
+                </div>
+                <div class="wh-mobile-panel">
+                    @foreach (var button in buttons.Where(b => b.Icon != "settings"))
+                    {
+                        <button type="button"
+                                class="btn btn-sm btn-outline-primary">
+                            <i data-feather="@button.Icon"
+                               width="1.8rem"
+                               height="1.8rem"></i>
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="wh-desktop-panel">
+                @foreach (var button in buttons)
+                {
+                    <button type="button"
+                            class="btn btn-sm btn-outline-primary">
+                        <i data-feather="@button.Icon"
+                           width="1.2rem"
+                           height="1.2rem"></i>
+                        <span>@button.Title</span>
+                    </button>
+                }
+            </div>
+        </div>
     </div>
     <script src="~/core/app.js" asp-append-version="true"></script>
 </body>

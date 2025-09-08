@@ -1,0 +1,31 @@
+.wh-application {
+    display: flex;
+    height: 100%;
+
+    @include media-breakpoint-up(lg) {
+        height: auto;
+        min-height: 60%;
+        min-width: 80%;
+        padding: 0 2rem;
+        margin: 0;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        border: {
+            radius: 0.4rem;
+            width: 0.2rem;
+            style: solid;
+        }
+    }
+
+    @include media-breakpoint-up(xl) {
+        min-width: 70%;
+    }
+
+    @include media-breakpoint-up(xxl) {
+        min-width: 60%;
+    }
+}

@@ -1,0 +1,11 @@
+.wh-desktop-panel {
+    display: none;
+
+    @include media-breakpoint-up(lg) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        height: 100%;
+    }
+}

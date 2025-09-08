@@ -1,0 +1,27 @@
+.wh-title-panel {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    padding: 1rem;
+
+    @include media-breakpoint-up(lg) {
+        padding: 0.5rem 1rem;
+    }
+}
+
+.wh-title {
+    $height: 2rem;
+
+    flex: 1 1 auto;
+
+    line-height: $height;
+    font: {
+        family: "Iceland", sans-serif;
+        size: $height;
+    }
+
+    span {
+        vertical-align: middle;
+    }
+}

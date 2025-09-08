@@ -1,0 +1,9 @@
+@import "_application.scss";
+@import "_container.scss";
+@import "panels/_desktop-panel.scss";
+@import "panels/_mobile-panel.scss";
+@import "panels/_title-panel.scss";
+
+html, body {
+    height: 100%;
+}
