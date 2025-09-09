@@ -11,17 +11,19 @@
 }
 
 .wh-title {
-    $height: 2rem;
-
     flex: 1 1 auto;
 
-    line-height: $height;
-    font: {
-        family: "Iceland", sans-serif;
-        size: $height;
-    }
+    > a {
+        text-decoration: none;
+        line-height: 2rem;
 
-    span {
-        vertical-align: middle;
+        font: {
+            family: "Iceland", sans-serif;
+            size: 1.8rem;
+        }
+
+        > svg {
+            margin-bottom: 2px;
+        }
     }
 }

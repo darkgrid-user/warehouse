@@ -7,31 +7,48 @@
 </head>
 <body>
     @{
-        var buttons = new[] {
-            new { Title = "Settings", Icon="settings",     Path = "..." },
-            new { Title = "Income",   Icon="log-in",       Path = "..." },
-            new { Title = "Store",    Icon="box",          Path = "..." },
-            new { Title = "Supply",   Icon="shopping-bag", Path = "..." },
-            new { Title = "Outcome",  Icon="log-out",      Path = "..." },
+        Button[] buttons = new[] {
+            new Button(nameof(SettingsController)) { Title = "Settings", Icon = "settings"     },
+            new Button(nameof(OverviewController)) { Title = "Overview", Icon = "layout"       },
+            new Button(nameof(IncomeController))   { Title = "Income",   Icon = "log-in"       },
+            new Button(nameof(StoreController))    { Title = "Store",    Icon = "box"          },
+            new Button(nameof(SupplyController))   { Title = "Supply",   Icon = "shopping-bag" },
+            new Button(nameof(OutcomeController))  { Title = "Outcome",  Icon = "log-out"      },
         };
+    }
+    @functions {
+        #pragma warning disable 1998
+        private async Task RenderButton(Button button, float size, bool hasTitle)
+        {
+            <a type="button"
+               class="btn btn-sm btn-outline-primary"
+               asp-controller="@button.Controller"
+               asp-action="Index">
+                <i data-feather="@button.Icon"
+                   width="@(size)rem"
+                   height="@(size)rem"></i>
+                @if (hasTitle)
+                {
+                    <span class="align-middle">@button.Title</span>
+                }
+            </a>
+        }
+        #pragma warning restore 1998
     }
     <div class="wh-application">
         <div class="flex-fill">
             <div class="wh-root-container">
                 <div class="wh-title-panel">
-                    <div>
-                        <i data-feather="package"></i>
-                    </div>
                     <div class="wh-title">
-                        Warehouse
+                        <a asp-controller="@buttons[0].Controller"
+                           asp-action="Index">
+                            <i data-feather="package"></i><span>Warehouse</span>
+                        </a>
                     </div>
                     <div class="d-lg-none">
-                        <button type="button"
-                                class="btn btn-sm btn-outline-primary">
-                            <i data-feather="@buttons[0].Icon"
-                               width="1.5rem"
-                               height="1.5rem"></i>
-                        </button>
+                        @{
+                            await RenderButton(@buttons[0], 1.5f, false); // add settings button
+                        }
                     </div>
                 </div>
                 <div class="wh-main-container">
@@ -40,14 +57,9 @@
                     </main>
                 </div>
                 <div class="wh-mobile-panel">
-                    @foreach (var button in buttons.Where(b => b.Icon != "settings"))
+                    @foreach (var button in buttons.Skip(1)) // skip settings button
                     {
-                        <button type="button"
-                                class="btn btn-sm btn-outline-primary">
-                            <i data-feather="@button.Icon"
-                               width="1.8rem"
-                               height="1.8rem"></i>
-                        </button>
+                        await RenderButton(button, 1.8f, false);
                     }
                 </div>
             </div>
@@ -56,13 +68,7 @@
             <div class="wh-desktop-panel">
                 @foreach (var button in buttons)
                 {
-                    <button type="button"
-                            class="btn btn-sm btn-outline-primary">
-                        <i data-feather="@button.Icon"
-                           width="1.2rem"
-                           height="1.2rem"></i>
-                        <span>@button.Title</span>
-                    </button>
+                    await RenderButton(button, 1.2f, true);
                 }
             </div>
         </div>
