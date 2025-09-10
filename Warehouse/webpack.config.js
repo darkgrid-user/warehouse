@@ -2,7 +2,7 @@
 
 module.exports = {
     entry: {
-        site: "./scripts/app.ts"
+        site: "./webpack.app.ts"
     },
     output: {
         filename: "app.js",
