@@ -8,25 +8,24 @@
 <body>
     @{
         Button[] buttons = new[] {
-            new Button(nameof(SettingsController)) { Title = "Settings", Icon = "settings"     },
-            new Button(nameof(OverviewController)) { Title = "Overview", Icon = "layout"       },
-            new Button(nameof(IncomeController))   { Title = "Income",   Icon = "log-in"       },
-            new Button(nameof(StoreController))    { Title = "Store",    Icon = "box"          },
-            new Button(nameof(SupplyController))   { Title = "Supply",   Icon = "shopping-bag" },
-            new Button(nameof(OutcomeController))  { Title = "Outcome",  Icon = "log-out"      },
+            new Button("Settings", "settings",           nameof(SettingsController)),
+            new Button("Overview", "layout-board",       nameof(OverviewController)),
+            new Button("Income",   "transfer-in",        nameof(IncomeController)),
+            new Button("Store",    "building-warehouse", nameof(StoreController)),
+            new Button("Supply",   "forklift",           nameof(SupplyController)),
+            new Button("Outcome",  "transfer-out",       nameof(OutcomeController))
         };
     }
     @functions {
         #pragma warning disable 1998
-        private async Task RenderButton(Button button, float size, bool hasTitle)
+        private async Task RenderButton(Button button, Size size, bool hasTitle)
         {
+            string iconClass = size.GetIconClass();
             <a type="button"
                class="btn btn-sm btn-outline-primary"
                asp-controller="@button.Controller"
                asp-action="Index">
-                <i data-feather="@button.Icon"
-                   width="@(size)rem"
-                   height="@(size)rem"></i>
+                <i class="@iconClass @button.Icon"></i>
                 @if (hasTitle)
                 {
                     <span class="align-middle">@button.Title</span>
@@ -42,12 +41,12 @@
                     <div class="wh-title">
                         <a asp-controller="@buttons[0].Controller"
                            asp-action="Index">
-                            <i data-feather="package"></i><span>Warehouse</span>
+                            <i class="wh-icon icon-package"></i><span>Warehouse</span>
                         </a>
                     </div>
                     <div class="d-lg-none">
                         @{
-                            await RenderButton(@buttons[0], 1.5f, false); // add settings button
+                            await RenderButton(@buttons[0], Size.Medium, false); // add settings button
                         }
                     </div>
                 </div>
@@ -59,7 +58,7 @@
                 <div class="wh-mobile-panel">
                     @foreach (var button in buttons.Skip(1)) // skip settings button
                     {
-                        await RenderButton(button, 1.8f, false);
+                        await RenderButton(button, Size.Large, false);
                     }
                 </div>
             </div>
@@ -68,7 +67,7 @@
             <div class="wh-desktop-panel">
                 @foreach (var button in buttons)
                 {
-                    await RenderButton(button, 1.2f, true);
+                    await RenderButton(button, Size.Small, true);
                 }
             </div>
         </div>

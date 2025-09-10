@@ -2,7 +2,7 @@
 @import "bootstrap/scss/functions";
 
 // custom variables
-@import "variables";
+@import "_scss/variables";
 
 // imported variables
 // @import "bootstrap/scss/variables-dark";
@@ -55,5 +55,7 @@
 @import "bootstrap/scss/utilities/api";
 
 // custom styles
+@import "_scss/components.scss";
+
 @import "Shared/scss/layout.scss";
 @import "Overview/index.scss";

@@ -11,29 +11,41 @@ namespace Warehouse.Models.UI
     /// </summary>
     public class Button
     {
+        private readonly string title;
+        private readonly string? icon;
         private readonly string controller;
         private readonly string action;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Button"/> class.
         /// </summary>
+        /// <param name="title">Title name.</param>
+        /// <param name="icon">Icon name.</param>
         /// <param name="controller">Controller name.</param>
         /// <param name="action">Action name.</param>
-        public Button(string controller, string action = "Index")
+        public Button(string title, string? icon, string controller, string action = "Index")
         {
+            this.title = title;
+            this.icon = icon;
             this.controller = controller;
             this.action = action;
         }
 
         /// <summary>
-        /// Gets or sets button icon name.
+        /// Gets button title.
         /// </summary>
-        public string? Icon { get; set; }
+        public string Title
+        {
+            get { return this.title; }
+        }
 
         /// <summary>
-        /// Gets or sets button title.
+        /// Gets button icon name.
         /// </summary>
-        public string? Title { get; set; }
+        public string? Icon
+        {
+            get { return Constants.Icon.CombineDash(this.icon); }
+        }
 
         /// <summary>
         /// Gets route controller name without 'Controller' suffix.

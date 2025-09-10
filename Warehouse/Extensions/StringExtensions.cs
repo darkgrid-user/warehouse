@@ -17,12 +17,22 @@ namespace Warehouse.Extensions
         /// <returns>New result string.</returns>
         public static string TrimEnd(this string input, string? value)
         {
-            if (value != null && input.EndsWith(value))
-            {
-                return input[..input.LastIndexOf(value)];
-            }
+            return value != null && input.EndsWith(value)
+                ? input[..input.LastIndexOf(value)]
+                : input;
+        }
 
-            return input;
+        /// <summary>
+        /// Combine two strings with a dash character.
+        /// </summary>
+        /// <param name="input">First string.</param>
+        /// <param name="value">Second string.</param>
+        /// <returns>New result string.</returns>
+        public static string CombineDash(this string input, string? value)
+        {
+            return value != null
+                ? $"{input}-{value}"
+                : input;
         }
     }
 }

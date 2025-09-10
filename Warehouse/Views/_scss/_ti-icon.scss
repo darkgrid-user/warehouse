@@ -1,0 +1,26 @@
+// configure 'tabler icons' variables
+$ti-font-path: "../node_modules/@tabler/icons-webfont/dist/fonts";
+$ti-prefix: "icon";
+
+// import 'tabler icons' sass dependency
+@import "@tabler/icons-webfont/dist/tabler-icons-300";
+
+// icon style classes
+.wh-icon {
+    font-size: 1.5rem;
+    vertical-align: middle;
+
+    @extend .icon;
+}
+
+.wh-icon-sm {
+    font-size: 1.2rem;
+
+    @extend .wh-icon;
+}
+
+.wh-icon-lg {
+    font-size: 1.8rem;
+
+    @extend .wh-icon;
+}
