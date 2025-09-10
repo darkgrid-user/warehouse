@@ -15,6 +15,8 @@
             new Button("Supply",   "forklift",           nameof(SupplyController)),
             new Button("Outcome",  "transfer-out",       nameof(OutcomeController))
         };
+        Button settingsButton = buttons.First(btn => btn.Title == "Settings");
+        Button overviewButton = buttons.First(btn => btn.Title == "Overview");
     }
     @functions {
         #pragma warning disable 1998
@@ -39,14 +41,14 @@
             <div class="wh-root-container">
                 <div class="wh-title-panel">
                     <div class="wh-title">
-                        <a asp-controller="@buttons[0].Controller"
+                        <a asp-controller="@overviewButton.Controller"
                            asp-action="Index">
                             <i class="wh-icon icon-package"></i><span>Warehouse</span>
                         </a>
                     </div>
                     <div class="d-lg-none">
                         @{
-                            await RenderButton(@buttons[0], Size.Medium, false); // add settings button
+                            await RenderButton(@settingsButton, Size.Medium, false);
                         }
                     </div>
                 </div>
@@ -56,7 +58,7 @@
                     </main>
                 </div>
                 <div class="wh-mobile-panel">
-                    @foreach (var button in buttons.Skip(1)) // skip settings button
+                    @foreach (var button in buttons.Except(new[] { settingsButton }))
                     {
                         await RenderButton(button, Size.Large, false);
                     }
