@@ -34,5 +34,15 @@ namespace Warehouse.Extensions
                 ? $"{input}-{value}"
                 : input;
         }
+
+        /// <summary>
+        /// Add a new line to the end of the current string.
+        /// </summary>
+        /// <param name="input">Current string.</param>
+        /// <returns>New result string.</returns>
+        public static string AddNewLine(this string input)
+        {
+            return $"{input}{Environment.NewLine}";
+        }
     }
 }
