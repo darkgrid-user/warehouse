@@ -43,16 +43,16 @@ namespace Warehouse.Middleware
         public async Task Invoke(HttpContext context)
         {
             // Pipeline start time.
-            DateTime startTime = DateTime.Now;
+            Stopwatch timer = Stopwatch.StartNew();
 
             // Execute other middleware components.
             await this.next(context);
 
             // Pipeline end time.
-            DateTime endTime = DateTime.Now;
+            timer.Stop();
 
             // Prepare and write a log message.
-            TimeSpan executionTime = endTime - startTime;
+            TimeSpan executionTime = timer.Elapsed;
             string message = this.messageProvider.GetMessage(
                 this.options,
                 executionTime,

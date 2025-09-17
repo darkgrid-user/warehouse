@@ -51,14 +51,18 @@ namespace Warehouse
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseRouting();
 
+            app.UseRouting(); // endpoint selected here
             app.UseAuthorization();
 
             // Configure endpoints.
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Overview}/{action=Index}/{id?}");
+            app.MapFallback(async context =>
+            {
+                await Task.Run(() => context.Response.Redirect("/"));
+            });
 
             // Run the application.
             app.Run();

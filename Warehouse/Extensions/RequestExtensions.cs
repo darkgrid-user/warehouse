@@ -10,22 +10,22 @@ namespace Warehouse.Extensions
     public static class RequestExtensions
     {
         /// <summary>
-        /// Try to get the route value as a string for this request,
+        /// Try to get the segment variable value as a string for this request,
         /// otherwise return the default value.
         /// </summary>
         /// <param name="request">Current request.</param>
-        /// <param name="key">Route value key.</param>
+        /// <param name="name">Segment variable name.</param>
         /// <param name="defaultValue">Default value.</param>
         /// <returns>Result string.</returns>
         public static string TryGetRouteValue(
             this HttpRequest request,
-            string key,
+            string name,
             string defaultValue = "")
         {
             RouteValueDictionary routeValues = request.RouteValues;
             return routeValues.Count > 0
-             && routeValues.ContainsKey(key)
-                ? routeValues[key]?.ToString() ?? defaultValue
+             && routeValues.ContainsKey(name)
+                ? routeValues[name] as string ?? defaultValue
                 : defaultValue;
         }
     }
