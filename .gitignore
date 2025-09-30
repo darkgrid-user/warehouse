@@ -6,7 +6,7 @@
 Warehouse/node_modules/
 
 # Generated code
-Warehouse/wwwroot/core
+Warehouse/wwwroot/
 
 # Build results
 bin/

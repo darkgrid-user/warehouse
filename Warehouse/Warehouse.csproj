@@ -4,10 +4,15 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>bc39556b-6b36-412c-b673-91b1fd01220a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="staticfiles\favicon.ico" />
   </ItemGroup>
 
   <ItemGroup>

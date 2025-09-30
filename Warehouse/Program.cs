@@ -4,6 +4,8 @@
 
 namespace Warehouse
 {
+    using Microsoft.Extensions.FileProviders;
+    using Warehouse.Extensions;
     using Warehouse.Middleware;
     using Warehouse.Middleware.I;
     using Warehouse.Middleware.Model;
@@ -25,22 +27,25 @@ namespace Warehouse
             // Register additional services.
             services.AddControllersWithViews();
 
-            // Configure custom dependency injection.
-            services.AddSingleton<ILogTimeMessageProvider, LogTimeMessageProvider>();
-
-            // Configure service options.
-            builder.Services.Configure<LogTimeOptions>(options =>
+            if (builder.Environment.IsDevelopment())
             {
-                options.HasPath = true;
-                options.HasController = true;
-                options.HasAction = true;
-            });
+                // Configure custom dependency injection.
+                services.AddSingleton<ILogTimeMessageProvider, LogTimeMessageProvider>();
+
+                // Configure service options.
+                IConfigurationSection options = builder
+                    .Configuration
+                    .GetSection("Options")
+                    .GetSection("LogTime");
+                builder.Services.Configure<LogTimeOptions>(options);
+            }
 
             // Build the application.
             WebApplication app = builder.Build();
+            IWebHostEnvironment env = app.Environment;
 
             // Configure middleware components (keep the order of statements) ↓↓↓.
-            if (app.Environment.IsDevelopment())
+            if (env.IsDevelopment())
             {
                 app.UseMiddleware<LogTimeMiddleware>(); // always has to be first
             }
@@ -50,7 +55,13 @@ namespace Warehouse
             }
 
             app.UseHttpsRedirection();
+
+            // Configure static files
             app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider($"{env.ContentRootPath}/staticfiles"),
+            });
 
             app.UseRouting(); // endpoint selected here
             app.UseAuthorization();
@@ -65,6 +76,14 @@ namespace Warehouse
             });
 
             // Run the application.
+            static string Separator(bool isTrailingNewLine)
+                => StringExtensions.CreateNewLine().AddSeparator(isTrailingNewLine);
+            string message = "The application is configured!!!";
+            app.Logger.LogInformation(
+                "{upperSeparator}{message}{lowerSeparator}",
+                Separator(true),
+                message,
+                Separator(false));
             app.Run();
         }
     }

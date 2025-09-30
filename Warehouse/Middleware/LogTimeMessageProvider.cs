@@ -40,8 +40,8 @@ namespace Warehouse.Middleware
                 executionTime.TotalSeconds.ToString(),
                 "Total seconds");
 
-            string separator = "###############################################################################";
-            return $"{separator.AddNewLine()}{path}{controller}{action}{total}";
+            string separator = StringExtensions.CreateSeparator();
+            return $"{separator}{path}{controller}{action}{total}{separator}";
         }
 
         private static string GetLine(bool hasValue, string value, string title)
@@ -52,7 +52,7 @@ namespace Warehouse.Middleware
             string remainSpaces = new(' ', remainLength);
             return hasValue
                 ? $"{title}:{remainSpaces} | {value}".AddNewLine()
-                : string.Empty;
+                : StringExtensions.CreateEmpty();
         }
     }
 }
