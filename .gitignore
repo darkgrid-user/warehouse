@@ -2,6 +2,9 @@
 .vs/
 *.user
 
+# Visual Studio code
+.vscode/
+
 # Packages
 Warehouse/node_modules/
 

@@ -13,10 +13,11 @@
     @extend .container-fluid;
 
     @include media-breakpoint-up(lg) {
-        padding: 0 1rem 2rem 1rem;
+        padding: 0 1rem 3rem 1rem;
     }
 
     main {
         height: 100%;
+        border: 1px dashed;
     }
 }

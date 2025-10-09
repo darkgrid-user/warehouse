@@ -51,6 +51,7 @@ namespace Warehouse
             }
             else
             {
+                app.UseExceptionHandler("/error");
                 app.UseHsts();
             }
 
@@ -72,7 +73,8 @@ namespace Warehouse
                 pattern: "{controller=Overview}/{action=Index}/{id?}");
             app.MapFallback(async context =>
             {
-                await Task.Run(() => context.Response.Redirect("/"));
+                context.Response.Redirect("/");
+                await Task.CompletedTask;
             });
 
             // Run the application.
