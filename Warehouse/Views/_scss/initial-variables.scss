@@ -1,0 +1,32 @@
+// #### palette scheme ####
+// style: vintage
+// dark color:    #4B352A
+// danger color:  #CA7842
+// success color: #B2CD9C
+// warning color: #F0F2BD
+
+// #### global variables ####
+// font
+$font-family-base: "Roboto Condensed Variable", sans-serif;
+
+// color
+$primary: #4B352A;
+
+// body
+$body-color: $primary;
+
+// layout
+$grid-columns: 24;
+$grid-gutter-width: 1rem;
+$grid-breakpoints: (
+    xs: 0,
+    sm: 480px,
+    md: 720px,
+    lg: 1080px,
+    xl: 1200px,
+    xxl: 1440px
+);
+
+// border
+$border-radius: 0.4rem;
+$border-color: $primary;

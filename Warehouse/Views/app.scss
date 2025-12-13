@@ -1,32 +1,31 @@
 // function set
 @import "bootstrap/scss/functions";
 
-// custom variables
-@import "_scss/variables";
+// initial variables
+@import "_scss/initial-variables";
 
 // imported variables
 // @import "bootstrap/scss/variables-dark";
 @import "bootstrap/scss/variables";
 
-// custom maps
-// @import "maps";
+// defined variables
+@import "_scss/defined-variables";
 
 // required parts
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/root";
-@import "bootstrap/scss/reboot";
-@import "bootstrap/scss/utilities";
 
-@import "bootstrap/scss/buttons";
-@import "bootstrap/scss/close";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/images";
 @import "bootstrap/scss/containers";
 @import "bootstrap/scss/grid";
-@import "bootstrap/scss/forms";
-@import "bootstrap/scss/images";
 @import "bootstrap/scss/tables";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/buttons";
 @import "bootstrap/scss/transitions";
-@import "bootstrap/scss/type";
+@import "bootstrap/scss/close";
 
 // optional components
 // @import "bootstrap/scss/accordion";
@@ -50,8 +49,14 @@
 // @import "bootstrap/scss/toasts";
 // @import "bootstrap/scss/tooltip"; // requires popper
 
+// helpers
+//@import "bootstrap/scss/helpers";
+
+// custom utilities
+@import "_scss/utilities.scss";
+
 // utilities
-@import "bootstrap/scss/helpers";
+@import "bootstrap/scss/utilities";
 @import "bootstrap/scss/utilities/api";
 
 // custom styles

@@ -5,27 +5,29 @@
     @include media-breakpoint-up(lg) {
         height: auto;
         min-height: 60%;
-        min-width: 80%;
         padding: 0 2rem;
         margin: 0;
-
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
 
         border: {
-            radius: 0.4rem;
-            width: 0.2rem;
-            style: solid;
+            style: $border-style;
+            radius: $border-radius;
+            width: map-get($border-widths, 3);
         }
     }
 
-    @include media-breakpoint-up(xl) {
+    @include media-breakpoint-only(lg) {
+        min-width: 80%;
+    }
+
+    @include media-breakpoint-only(xl) {
         min-width: 70%;
     }
 
-    @include media-breakpoint-up(xxl) {
+    @include media-breakpoint-only(xxl) {
         min-width: 60%;
     }
 }

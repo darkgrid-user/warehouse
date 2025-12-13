@@ -1,0 +1,13 @@
+$utilities: (
+    "font-weight": (
+        property: font-weight,
+        class: fw,
+        values: (
+            light:  200,
+            normal: 400,
+            bold:   800
+        )    
+    )
+);
+
+//$utilities: map-get-multiple()
