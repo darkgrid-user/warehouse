@@ -18,5 +18,10 @@ namespace Warehouse.Models.UI
         /// Icon constant.
         /// </summary>
         public const string Icon = "icon";
+
+        /// <summary>
+        /// Button constant.
+        /// </summary>
+        public const string Button = "btn";
     }
 }

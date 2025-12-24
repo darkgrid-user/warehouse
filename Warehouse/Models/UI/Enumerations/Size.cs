@@ -10,14 +10,14 @@ namespace Warehouse.Models.UI.Enumerations
     public enum Size
     {
         /// <summary>
-        /// Small element.
+        /// Medium element. Default value.
         /// </summary>
-        Small = 0,
+        Medium = 0,
 
         /// <summary>
-        /// Medium element.
+        /// Small element.
         /// </summary>
-        Medium = 1,
+        Small = 1,
 
         /// <summary>
         /// Large element.

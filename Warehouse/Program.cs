@@ -9,6 +9,8 @@ namespace Warehouse
     using Warehouse.Middleware;
     using Warehouse.Middleware.I;
     using Warehouse.Middleware.Model;
+    using Warehouse.TagHelpers.Services;
+    using Warehouse.TagHelpers.Services.I;
 
     /// <summary>
     /// ASP.NET Core application configuration.
@@ -31,6 +33,10 @@ namespace Warehouse
             {
                 // Configure custom dependency injection.
                 services.AddSingleton<ILogTimeMessageProvider, LogTimeMessageProvider>();
+                services.AddSingleton<IBrokenIconBuilder, BrokenIconBuilder>();
+                services.AddSingleton<IIconBuilder, IconBuilder>();
+                services.AddSingleton<IIconProvider, IconProvider>();
+                services.AddSingleton<IButtonProvider, ButtonProvider>();
 
                 // Configure service options.
                 IConfigurationSection options = builder

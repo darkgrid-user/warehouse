@@ -1,9 +1,14 @@
 // #### palette scheme ####
 // style: vintage
-// dark color:    #4B352A
-// danger color:  #CA7842
-// success color: #B2CD9C
-// warning color: #F0F2BD
+
+// primary color:    #4B352A
+// secondary color:  #CA7842
+// extra color:      #B2CD9C
+// background color: #F0F2BD
+
+// success color:    #84994F
+// warning color:    #FCB53B
+// danger color:     #A72703
 
 // #### global variables ####
 // font
@@ -11,6 +16,8 @@ $font-family-base: "Roboto Condensed Variable", sans-serif;
 
 // color
 $primary: #4B352A;
+$warning: #FCB53B;
+$danger: #A72703;
 
 // body
 $body-color: $primary;

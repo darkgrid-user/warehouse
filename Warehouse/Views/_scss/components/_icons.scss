@@ -1,26 +1,34 @@
-// configure 'tabler icons' variables
-$ti-font-path: "../node_modules/@tabler/icons-webfont/dist/fonts";
-$ti-prefix: "icon";
+// icon mixins
+@mixin wh-icon-size($size) {
+    width: $size;
+    height: $size;
+    line-height: $size;
+}
 
-// import 'tabler icons' sass dependency
-@import "@tabler/icons-webfont/dist/tabler-icons-300";
-
-// icon style classes
+// icon classes
 .wh-icon {
-    font-size: 1.5rem;
+    display: inline-block;
     vertical-align: middle;
-
-    @extend .icon;
+    stroke-width: 1.5px;
+    @include wh-icon-size(1.5rem);
 }
 
 .wh-icon-sm {
-    font-size: 1.2rem;
-
-    @extend .wh-icon;
+    @include wh-icon-size(1.2rem);
 }
 
 .wh-icon-lg {
-    font-size: 1.8rem;
+    @include wh-icon-size(1.8rem);
+}
 
-    @extend .wh-icon;
+.wh-broken-icon {
+    text-align: center;
+    background-color: $warning;
+
+    border: {
+        color: $danger;
+        style: $border-style;
+        width: $border-width;
+        radius: $border-radius;
+    }
 }

@@ -3,7 +3,6 @@
     "@fontsource-variable/roboto-condensed": "^5.2.6",
     "@fontsource/iceland": "^5.2.6",
     "@popperjs/core": "^2.11.8",
-    "@tabler/icons-webfont": "^3.34.1",
     "bootstrap": "^5.3.8",
     "jquery": "^3.7.1"
   },

@@ -9,33 +9,15 @@
 <body>
     @{
         Button[] buttons = new[] {
-            new Button("Settings", "settings",           nameof(SettingsController)),
-            new Button("Overview", "layout-board",       nameof(OverviewController)),
-            new Button("Income",   "transfer-in",        nameof(IncomeController)),
-            new Button("Store",    "building-warehouse", nameof(StoreController)),
-            new Button("Supply",   "forklift",           nameof(SupplyController)),
-            new Button("Outcome",  "transfer-out",       nameof(OutcomeController))
+            new Button(Icon.Settings, "Settings", nameof(SettingsController)),
+            new Button(Icon.Overview, "Overview", nameof(OverviewController)),
+            new Button(Icon.Income,   "Income",   nameof(IncomeController)),
+            new Button(Icon.Store,    "Store",    nameof(StoreController)),
+            new Button(Icon.Supply,   "Supply",   nameof(SupplyController)),
+            new Button(Icon.Outcome,  "Outcome",  nameof(OutcomeController))
         };
         Button settingsButton = buttons.First(btn => btn.Title == "Settings");
         Button overviewButton = buttons.First(btn => btn.Title == "Overview");
-    }
-    @functions {
-        #pragma warning disable 1998
-        private async Task RenderButton(Button button, Size size, bool hasTitle)
-        {
-            string iconClass = size.GetIconClass();
-            <a type="button"
-               class="btn btn-sm btn-outline-primary"
-               asp-controller="@button.Controller"
-               asp-action="Index">
-                <i class="@iconClass @button.Icon"></i>
-                @if (hasTitle)
-                {
-                    <span class="align-middle">@button.Title</span>
-                }
-            </a>
-        }
-        #pragma warning restore 1998
     }
     <div class="wh-application">
         <div class="flex-fill">
@@ -43,13 +25,17 @@
                 <div class="wh-title-panel">
                     <div class="wh-title">
                         <a asp-controller="@overviewButton.Controller"
-                           asp-action="Index">
-                            <i class="wh-icon icon-package"></i><span>Warehouse</span>
+                           asp-action="@overviewButton.Action">
+                            <wh-icon name="Package"></wh-icon><span>Warehouse</span>
                         </a>
                     </div>
                     <div class="d-lg-none">
                         @{
-                            await RenderButton(@settingsButton, Size.Medium, false);
+                            <wh-button icon="@settingsButton.Icon"
+                                       size="Medium"
+                                       controller="@settingsButton.Controller"
+                                       action="@settingsButton.Action">
+                            </wh-button>
                         }
                     </div>
                 </div>
@@ -61,7 +47,11 @@
                 <div class="wh-mobile-panel">
                     @foreach (var button in buttons.Except(new[] { settingsButton }))
                     {
-                        await RenderButton(button, Size.Large, false);
+                        <wh-button icon="@button.Icon"
+                                   size="Large"
+                                   controller="@button.Controller"
+                                   action="@button.Action">
+                        </wh-button>
                     }
                 </div>
             </div>
@@ -70,7 +60,12 @@
             <div class="wh-desktop-panel">
                 @foreach (var button in buttons)
                 {
-                    await RenderButton(button, Size.Small, true);
+                    <wh-button title="@button.Title"
+                               icon="@button.Icon"
+                               size="Small"
+                               controller="@button.Controller"
+                               action="@button.Action">
+                    </wh-button>
                 }
             </div>
         </div>

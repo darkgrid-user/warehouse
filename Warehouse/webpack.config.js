@@ -14,8 +14,11 @@ module.exports = {
     mode: "development",
     watch: true,
     resolve: {
-        extensions: [".ts", ".js"],
-        extensionAlias: { ".js": [".js", ".ts"] }
+        extensions: [".ts"]
+    },
+    stats: {
+        modules: true,
+        modulesSpace: 999
     },
     module: {
         rules: [
@@ -45,15 +48,15 @@ module.exports = {
                             }
                         }
                     }
-                ],
+                ]
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/,
-                type: "asset/resource",
+                type: "asset/resource"
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
-                type: "asset/resource",
+                type: "asset/resource"
             }
         ]
     },

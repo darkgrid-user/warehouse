@@ -5,30 +5,39 @@
 namespace Warehouse.Models.UI
 {
     using Warehouse.Extensions;
+    using Warehouse.Models.UI.Enumerations;
 
     /// <summary>
     /// Custom UI button.
     /// </summary>
     public class Button
     {
+        private readonly Icon icon;
         private readonly string title;
-        private readonly string? icon;
         private readonly string controller;
         private readonly string action;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Button"/> class.
         /// </summary>
+        /// <param name="icon">Icon value.</param>
         /// <param name="title">Title name.</param>
-        /// <param name="icon">Icon name.</param>
         /// <param name="controller">Controller name.</param>
         /// <param name="action">Action name.</param>
-        public Button(string title, string? icon, string controller, string action = "Index")
+        public Button(Icon icon, string title, string controller, string action = "Index")
         {
-            this.title = title;
             this.icon = icon;
+            this.title = title;
             this.controller = controller;
             this.action = action;
+        }
+
+        /// <summary>
+        /// Gets button icon name.
+        /// </summary>
+        public Icon Icon
+        {
+            get { return this.icon; }
         }
 
         /// <summary>
@@ -37,14 +46,6 @@ namespace Warehouse.Models.UI
         public string Title
         {
             get { return this.title; }
-        }
-
-        /// <summary>
-        /// Gets button icon name.
-        /// </summary>
-        public string? Icon
-        {
-            get { return Constants.Icon.CombineDash(this.icon); }
         }
 
         /// <summary>
